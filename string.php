@@ -1,14 +1,11 @@
 <?php
-$strings = ["Hello", "World", "PHP", "Programming"];
-
-$vowels = ["a","e","i","o","u"];
+$strings = ["AHello", "World", "PHP", "Programming"];
 foreach($strings as $word){
     $vowel = 0;
     for($i=0; $i < strlen($word); $i++){
-        if(in_array($word[$i],$vowels)){
+        if(in_array(strtolower($word[$i]),["a","e","i","o","u"])){
             $vowel++;
         }
     }
-    $rev = strrev($word);
-    echo "Original String: $word, Vowel Count: $vowel, Reversed String: $rev\n";
+    echo "Original String: $word, Vowel Count: $vowel, Reversed String: ".strrev($word)."\n";
 }

@@ -59,31 +59,28 @@ class Member
     }
 
     // TODO: Add borrowBook method
-    public function borrowBook($bookName,$copies){
-        return "Available Copies of '$bookName': $copies";
+    public function borrowBook($bookName){
+        $bookName->borrowBook();
+        return "Available Copies of '".$bookName->getTitle()."': ".$bookName->getAvailableCopies()."\n";
     }
 
 
 
     // TODO: Add returnBook method
-    public function returnBook($bookName,$copies){
-        return "Available Copies of '$bookName': $copies";
+    public function returnBook($bookName){
+        $bookName->returnBook();
+        return "Available Copies of '".$bookName->getTitle()."': ".$bookName->getAvailableCopies()."\n";
     }
 
 }
 
 $book1 = new Book("The Great Gatsby",5);
-$book1->borrowBook();
-$av1 = $book1->getAvailableCopies();
-$b1 = $book1->getTitle();
 $member1 = new Member("John Doe");
-echo $member1->borrowBook($b1,$av1);
+echo $member1->borrowBook($book1);
+// echo $member1->returnBook($book1);
 
-echo PHP_EOL;
 
-$book2 = new Book("To Kill a Mockingbird", 3);
-$book2->borrowBook();
-$av2 = $book2->getAvailableCopies();
-$b2 = $book2->getTitle();
+$book2 = new Book("To Kill a Mockingbird",3);
 $member2 = new Member("Jane Smith");
-echo $member2->returnBook($b2,$av2);
+echo $member2->borrowBook($book2);
+// echo $member2->returnBook($book2);
